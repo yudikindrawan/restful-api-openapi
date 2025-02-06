@@ -1,0 +1,100 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "User API",
+    "description": "API to manage users",
+    "version": "1.0.0"
+  },
+  "servers" :[
+    {
+      "url": "http://localhost:8000"
+    }
+  ],
+  "paths": {
+    "/api/users" : {
+      "post": {
+        "description": "Register a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "description": "Register user",
+                "value": {
+                  "username": "user1",
+                  "password": "password",
+                  "name": "User 1"
+                }
+              },
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name", "email", "password"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201" : {
+            "description" : "Success Register User",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties": {
+                    "data" : {
+                      "type": "object",
+                      "properties": {
+                        "id" : {
+                          "type": "number"
+                        },
+                        "username" : {
+                          "type": "string"
+                        },
+                        "name" : {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "errors" : {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/login" : {
+      "post": {
+        "description": "Login a user"
+      }
+    },
+    "/api/users/current": {
+      "get": {
+        "description": "Get current user"
+      },
+      "patch": {
+        "description": "Update current user"
+      }
+    },
+    "/api/users/logout": {
+      "delete": {
+        "description": "Logout current user"
+      }
+    }
+  }
+}
