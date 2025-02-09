@@ -48,40 +48,40 @@
           },
           "responses": {
             "200" : {
-            "description" : "Success Create Contact",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties": {
-                    "data" : {
-                      "type": "object",
-                      "properties" : {
-                        "id" : {
-                          "type": "number"
-                        },
-                        "first_name" : {
-                          "type": "string"
-                        },
-                        "last_name" : {
-                          "type": "string"
-                        },
-                        "email" : {
-                          "type": "string"
-                        },
-                        "phone" : {
-                          "type": "string"
+              "description" : "Success Create Contact",
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "type" : "object",
+                    "properties": {
+                      "data" : {
+                        "type": "object",
+                        "properties" : {
+                          "id" : {
+                            "type": "number"
+                          },
+                          "first_name" : {
+                            "type": "string"
+                          },
+                          "last_name" : {
+                            "type": "string"
+                          },
+                          "email" : {
+                            "type": "string"
+                          },
+                          "phone" : {
+                            "type": "string"
+                          }
                         }
+                      },
+                      "errors" : {
+                        "type": "object"
                       }
-                    },
-                    "errors" : {
-                      "type": "object"
                     }
                   }
                 }
               }
             }
-          }
           }
         },
         "get": {
@@ -93,6 +93,14 @@
               "required": true,
               "schema": {
                 "type": "string"
+              }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "number"
               }
             }
           ]
@@ -109,8 +117,53 @@
               "schema": {
                 "type": "string"
               }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "number"
+              }
             }
-          ]
+          ],
+          "responses": {
+            "200" : {
+              "description" : "Success Get Contact",
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "type" : "object",
+                    "properties": {
+                      "data" : {
+                        "type": "object",
+                        "properties" : {
+                          "id" : {
+                            "type": "number"
+                          },
+                          "first_name" : {
+                            "type": "string"
+                          },
+                          "last_name" : {
+                            "type": "string"
+                          },
+                          "email" : {
+                            "type": "string"
+                          },
+                          "phone" : {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "errors" : {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "put": {
           "description": "Update a contact by id",
@@ -122,8 +175,77 @@
               "schema": {
                 "type": "string"
               }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "number"
+              }
             }
-          ]
+          ],
+          "requestBody": {
+            "description": "Update contact",
+            "content": {
+              "application/json" : {
+                "schema" : {
+                  "type": "object",
+                  "properties": {
+                    "first_name": {
+                      "type": "string"
+                    },
+                    "last_name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200" : {
+              "description" : "Success Update Contact",
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "type" : "object",
+                    "properties": {
+                      "data" : {
+                        "type": "object",
+                        "properties" : {
+                          "id" : {
+                            "type": "number"
+                          },
+                          "first_name" : {
+                            "type": "string"
+                          },
+                          "last_name" : {
+                            "type": "string"
+                          },
+                          "email" : {
+                            "type": "string"
+                          },
+                          "phone" : {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "errors" : {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "delete": {
           "description": "Delete a contact by id",
@@ -134,6 +256,14 @@
               "required": true,
               "schema": {
                 "type": "string"
+              }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "number"
               }
             }
           ]
