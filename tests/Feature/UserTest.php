@@ -87,8 +87,35 @@ class UserTest extends TestCase
         self::assertNotNull($user->token);
     }
 
-    public function testLoginFailed() 
+    public function testLoginFailedUsernameNotFound() 
     {
+        $this->post('/api/users/login', [
+            'username' => 'test',
+            'password' => 'test'
+        ])->assertStatus(401)
+            ->assertJson([
+                "errors" => [
+                    "message" => [
+                        "Invalid username or password"
+                    ]
+                ]
+            ]);
+    }
 
+    public function testLoginFailedPasswordWrong() 
+    {
+        $this->seed([UserSeeder::class]);
+        $this->post('/api/users/login', [
+            'username' => 'test',
+            'password' => 'salah'
+        ])->assertStatus(401)
+            ->assertJson([
+                "errors" => [
+                    "message" => [
+                        "Invalid username or password"
+                    ]
+                ]
+            ]);
+            
     }
 }
